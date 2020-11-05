@@ -1,38 +1,52 @@
 {
   "name": "netflix_roulette",
-  "version": "0.1.0",
-  "private": true,
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest",
+    "start": "cross-env NODE_ENV=development webpack serve --config webpack.dev.js --open 'Chrome.exe'",
+    "dev": "cross-env NODE_ENV=production webpack --config webpack.dev.js",
+    "prod": "cross-env NODE_ENV=development webpack --config webpack.prod.js",
+    "clean": "rm -f -r dist",
+    "lint": "eslint src/*.{js,jsx}",
+    "fix": "npm run lint -- --fix",
+    "format": "prettier --write **/*.{js,jsx,json}"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MaksimDiubo/netflix_roulette.git"
+  },
+  "author": "Maksim Diubo",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MaksimDiubo/netflix_roulette/issues"
+  },
+  "homepage": "https://github.com/MaksimDiubo/netflix_roulette#readme",
   "dependencies": {
-    "@testing-library/jest-dom": "^5.11.5",
-    "@testing-library/react": "^11.1.0",
-    "@testing-library/user-event": "^12.1.10",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
-    "react-scripts": "4.0.0",
-    "web-vitals": "^0.2.4"
+    "react-redux": "^7.2.2",
+    "react-router": "^5.2.0",
+    "redux": "^4.0.5"
   },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
-  },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
+  "devDependencies": {
+    "@babel/core": "^7.12.3",
+    "@babel/preset-env": "^7.12.1",
+    "@babel/preset-react": "^7.12.5",
+    "babel-loader": "^8.1.0",
+    "clean-webpack-plugin": "^3.0.0",
+    "cross-env": "^7.0.2",
+    "css-loader": "^5.0.1",
+    "file-loader": "^6.2.0",
+    "html-webpack-plugin": "^4.5.0",
+    "jest": "^26.6.3",
+    "sass": "^1.29.0",
+    "sass-loader": "^10.0.5",
+    "style-loader": "^2.0.0",
+    "webpack": "^5.4.0",
+    "webpack-cli": "^4.2.0",
+    "webpack-dev-server": "^3.11.0",
+    "webpack-merge": "^5.3.0"
   }
 }
