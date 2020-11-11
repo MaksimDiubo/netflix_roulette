@@ -1,0 +1,67 @@
+@import '../../assets/scss/variables';
+
+.btn {
+  font-family: Roboto, sans-serif;
+  text-transform: uppercase;
+  font-weight: 400;
+  border-radius: 5px;
+  cursor: pointer;
+  outline: none;
+  display: inline-block;
+  box-sizing: border-box;
+
+  &:hover {
+    box-shadow: inset 0 0 20px rgba(255, 255, 255, 0.5),
+      0 0 20px rgba(255, 255, 255, 0.2);
+    outline-color: rgba(255, 255, 255, 0);
+    outline-offset: 15px;
+    text-shadow: 1px 1px 2px #427388;
+  }
+
+  &:active {
+    transform: scale(0.98);
+    box-shadow: 3px 2px 22px 1px rgba(0, 0, 0, 0.24);
+  }
+}
+
+.btn-m {
+  font-size: 1.8rem;
+  line-height: 4.5rem;
+  height: 45px;
+  padding: 0 20px;
+}
+
+.btn-l {
+  font-size: 2rem;
+  line-height: 5.5rem;
+  height: 55px;
+  padding: 0 70px;
+}
+
+.btn-contained {
+  border: none;
+  font-weight: normal;
+  &.btn-primary {
+    background-color: $color-primary;
+    border-color: $color-primary;
+    color: $color-text;
+  }
+  &.btn-secondary {
+    background-color: $color-secondary;
+    border-color: $color-secondary;
+    color: $color-primary;
+  }
+}
+
+.btn-outlined {
+  border-style: unset;
+  background-color: transparent;
+  &.btn-primary {
+    border-color: $color-primary;
+    color: $color-primary;
+  }
+  &.btn-secondary {
+    border-color: $color-secondary;
+    color: $color-secondary;
+  }
+}

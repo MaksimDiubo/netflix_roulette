@@ -1,0 +1,14 @@
+@import '../../assets/scss/variables';
+
+.logo {
+  color: $color-primary;
+  font-size: 2rem;
+}
+
+.visually-hidden {
+  position: absolute;
+  clip: rect(0 0 0 0);
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+}
