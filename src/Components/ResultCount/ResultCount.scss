@@ -1,0 +1,13 @@
+@import '../../assets/scss/variables';
+
+.result-count {
+  display: inline-block;
+  font-size: 1.8rem;
+  font-weight: 100;
+  color: $color-text;
+  padding-top: 20px;
+
+  &b {
+    font-weight: bold;
+  }
+}

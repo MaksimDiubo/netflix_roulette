@@ -1,0 +1,29 @@
+@import '../../assets/scss/variables';
+
+.results-filter {
+  position: relative;
+  margin: 0;
+  padding: 0;
+}
+
+.results-filter li {
+  display: inline-block;
+  margin-right: 20px;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-size: 1.8rem;
+  font-weight: 300;
+  color: $color-text;
+  cursor: pointer;
+}
+
+#marker {
+  position: absolute;
+  left: 0;
+  height: 4px;
+  width: 0;
+  background-color: $color-primary;
+  bottom: -7px;
+  transition: 0.5s;
+  border-radius: 4px;
+}

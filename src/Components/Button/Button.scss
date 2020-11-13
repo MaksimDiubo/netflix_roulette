@@ -26,8 +26,8 @@
 
 .btn-m {
   font-size: 1.8rem;
-  line-height: 4.5rem;
-  height: 45px;
+  line-height: 4.7rem;
+  height: 47px;
   padding: 0 20px;
 }
 
@@ -47,8 +47,8 @@
     color: $color-text;
   }
   &.btn-secondary {
-    background-color: $color-secondary;
-    border-color: $color-secondary;
+    background-color: $color-secondary-btn;
+    border-color: $color-secondary-btn;
     color: $color-primary;
   }
 }
@@ -61,7 +61,7 @@
     color: $color-primary;
   }
   &.btn-secondary {
-    border-color: $color-secondary;
-    color: $color-secondary;
+    border-color: $color-secondary-btn;
+    color: $color-secondary-btn;
   }
 }

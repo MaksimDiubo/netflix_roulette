@@ -1,0 +1,44 @@
+@import '../../assets/scss/variables';
+
+.movie-item {
+  margin-top: 10px;
+  margin-bottom: 40px;
+  display: flex;
+  flex-direction: column;
+}
+
+.movie-item img {
+  width: 100%;
+  max-width: 345px;
+  height: auto;
+}
+
+.movie-item__description {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  padding: 20px 0 10px 0;
+  font-size: 1.4rem;
+  font-weight: 100;
+  color: $color-text;
+}
+
+.movie-item__title {
+  margin: 0;
+  padding: 0;
+  padding-bottom: 5px;
+  font-size: 2rem;
+  font-weight: 100;
+  line-height: 1.8rem;
+}
+
+.movie-item__date {
+  padding: 2px 12px;
+  border: 1px solid $color-text;
+  border-radius: 4px;
+  line-height: 1.8rem;
+}
+
+.movie-ganre {
+  flex-basis: 100%;
+}

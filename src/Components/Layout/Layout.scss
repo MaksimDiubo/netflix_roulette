@@ -1,7 +1,22 @@
-.layout-2-column {
-  margin: 0 auto;
-  max-width: 1080px;
-  padding: 15px 0;
+@mixin layout($justify-content: space-between) {
+  padding: 20px 0;
   display: flex;
-  justify-content: space-between;
+  justify-content: $justify-content;
+}
+
+.layout-1-column {
+  @include layout(center);
+}
+
+.layout-2-column {
+  @include layout;
+}
+
+.layout-3-column {
+  @include layout;
+  flex-wrap: wrap;
+
+  & > * {
+    flex: 0 0 32%;
+  }
 }

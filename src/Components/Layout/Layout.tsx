@@ -3,9 +3,18 @@ import React from 'react'
 import './Layout.scss'
 
 interface ILayoutProps {
-  columns?: number
+  columns?: string
+  additionalClass?: string
 }
 
-export const Layout: React.FC<ILayoutProps> = ({ columns = 2, children }) => {
-  return <div className={`layout-${columns}-column`}>{children}</div>
+export const Layout: React.FC<ILayoutProps> = ({
+  columns = '1',
+  additionalClass,
+  children,
+}) => {
+  return (
+    <div className={`layout-${columns}-column ${additionalClass}`}>
+      {children}
+    </div>
+  )
 }
