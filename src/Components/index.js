@@ -7,6 +7,7 @@ import { ResultsFilter } from './ResultsFilter'
 import { ResultsSelect } from './ResultsSelect'
 import { ResultCount } from './ResultCount'
 import { MoviesList } from './MoviesList'
+import { ErrorBoundary } from './ErrorBoundary'
 
 export {
   Layout,
@@ -18,4 +19,5 @@ export {
   ResultsSelect,
   ResultCount,
   MoviesList,
+  ErrorBoundary,
 }

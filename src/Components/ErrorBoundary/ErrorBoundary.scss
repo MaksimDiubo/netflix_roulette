@@ -1,0 +1,11 @@
+@import '../../assets/scss/variables';
+
+h2 {
+  display: inline-block;
+  text-align: center;
+  line-height: 2rem;
+  font-size: 2rem;
+  color: $color-text;
+  text-transform: uppercase;
+  letter-spacing: 0.3rem;
+}
