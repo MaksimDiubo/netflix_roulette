@@ -1,4 +1,5 @@
 import React, { ButtonHTMLAttributes } from 'react'
+import classnames from 'classnames'
 
 import './Button.scss'
 
@@ -18,7 +19,11 @@ export const Button: React.FC<IButtonProps> = ({
 
   return (
     <button
-      className={`btn btn-${variant} btn-${color} btn-${size}`}
+      className={classnames({
+        [`btn btn-${variant}`]: variant,
+        [`btn-${color}`]: color,
+        [`btn-${size}`]: size,
+      })}
       {...props}
     >
       {children}

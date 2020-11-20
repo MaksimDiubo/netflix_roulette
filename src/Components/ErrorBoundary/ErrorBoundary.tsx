@@ -25,7 +25,7 @@ class ErrorBoundary extends React.Component<Props, State> {
     if (this.state.hasError) {
       return (
         <Layout>
-          <h2>Sorry.. there was an error</h2>
+          <h2 className="errorBoundary__title">Sorry.. there was an error</h2>
         </Layout>
       )
     }

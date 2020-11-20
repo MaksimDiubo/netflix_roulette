@@ -8,8 +8,8 @@ export const Header = () => {
   return (
     <div className="header">
       <Wrapper>
-        <Layout columns='2'>
-          <Logo />
+        <Layout columns="2">
+          <Logo isHeaderLogo />
           <Button color="secondary" value="+ add move">
             + add move
           </Button>

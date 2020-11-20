@@ -26,12 +26,12 @@ export const ResultsFilter = () => {
   return (
     <ul className="results-filter">
       <div
-        id="marker"
+        className="results-filter__marker"
         style={{ left: markerPosition.left, width: markerPosition.width }}
       ></div>
       {tags.map((tag) => {
         return (
-          <li key={tag.id} onClick={indicator}>
+          <li className="results-filter__tag" key={tag.id} onClick={indicator}>
             {tag.genre}
           </li>
         )

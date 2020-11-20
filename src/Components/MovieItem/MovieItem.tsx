@@ -32,7 +32,7 @@ export const MovieItem: React.FC<IMovieItemProps> = ({
       <div className="movie-item__description">
         <h4 className="movie-item__title">{title}</h4>
         <span className="movie-item__date">{date.slice(0, 4)}</span>
-        <span className="movie-ganre">{ganre.join(', ')}</span>
+        <span className=".movie-item__ganre">{ganre.join(', ')}</span>
       </div>
     </div>
   )

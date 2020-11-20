@@ -6,7 +6,7 @@
   padding: 0;
 }
 
-.results-filter li {
+.results-filter__tag {
   display: inline-block;
   margin-right: 20px;
   text-decoration: none;
@@ -17,7 +17,7 @@
   cursor: pointer;
 }
 
-#marker {
+.results-filter__marker {
   position: absolute;
   left: 0;
   height: 4px;

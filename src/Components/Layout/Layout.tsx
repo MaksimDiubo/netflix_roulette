@@ -1,4 +1,5 @@
 import React from 'react'
+import classnames from 'classnames'
 
 import './Layout.scss'
 
@@ -13,7 +14,12 @@ export const Layout: React.FC<ILayoutProps> = ({
   children,
 }) => {
   return (
-    <div className={`layout-${columns}-column ${additionalClass}`}>
+    <div
+      className={classnames({
+        [`layout-${columns}-column`]: columns,
+        additionalClass: additionalClass,
+      })}
+    >
       {children}
     </div>
   )
