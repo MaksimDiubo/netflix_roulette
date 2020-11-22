@@ -1,0 +1,20 @@
+{
+  "genres": [
+    {
+      "genre": "Crime",
+      "id": "01_cr"
+    },
+    {
+      "genre": "Documentary",
+      "id": "02_doc"
+    },
+    {
+      "genre": "Horror",
+      "id": "03_hor"
+    },
+    {
+      "genre": "Comedy",
+      "id": "04_com"
+    }
+  ]
+}

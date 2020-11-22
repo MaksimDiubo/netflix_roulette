@@ -1,6 +1,7 @@
 @import '../../assets/scss/variables';
 
 .btn {
+  min-width: 160px;
   font-family: Roboto, sans-serif;
   text-transform: uppercase;
   font-weight: 400;
@@ -54,7 +55,6 @@
 }
 
 .btn-outlined {
-  border-style: unset;
   background-color: transparent;
   &.btn-primary {
     border-color: $color-primary;

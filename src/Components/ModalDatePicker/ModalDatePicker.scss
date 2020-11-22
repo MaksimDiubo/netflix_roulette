@@ -1,0 +1,10 @@
+@import '../../assets/scss/variables';
+@import '../../assets/scss/mixins';
+
+.modal-date__label {
+  @include input-label;
+}
+
+.modal-date__input {
+  @include input;
+}

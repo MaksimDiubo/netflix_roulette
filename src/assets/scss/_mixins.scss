@@ -1,0 +1,27 @@
+@import '../../assets/scss/variables';
+
+@mixin input-label {
+  display: block;
+  margin: 25px 0 15px 0;
+  font-size: 1.8rem;
+  font-weight: 300;
+  color: $color-primary;
+  text-transform: uppercase;
+}
+
+@mixin input {
+  display: block;
+  box-sizing: border-box;
+  width: 100%;
+  font-family: 'Roboto', sans-serif;
+  padding: 0 10px;
+  font-size: 2rem;
+  line-height: 5.5rem;
+  color: $color-text;
+  font-weight: 100;
+  height: 55px;
+  border-radius: 5px;
+  border: none;
+  outline: none;
+  background-color: $color-secondary;
+}

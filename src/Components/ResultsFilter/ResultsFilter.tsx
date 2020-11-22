@@ -1,16 +1,10 @@
 import React, { useState } from 'react'
 
+import genres from '../../data/genres.json'
+
 import './ResultsFilter.scss'
 
 export const ResultsFilter = () => {
-  const tags = [
-    { genre: 'all', id: '01' },
-    { genre: 'documentary', id: '02' },
-    { genre: 'comedy', id: '03' },
-    { genre: 'horror', id: '04' },
-    { genre: 'crime', id: '05' },
-  ]
-
   const [markerPosition, setMarkerPosition] = useState({
     left: 0,
     width: '32px',
@@ -29,10 +23,17 @@ export const ResultsFilter = () => {
         className="results-filter__marker"
         style={{ left: markerPosition.left, width: markerPosition.width }}
       ></div>
-      {tags.map((tag) => {
+      <li className="results-filter__tag" onClick={indicator}>
+        all
+      </li>
+      {genres.genres.map((genre) => {
         return (
-          <li className="results-filter__tag" key={tag.id} onClick={indicator}>
-            {tag.genre}
+          <li
+            className="results-filter__tag"
+            key={genre.id}
+            onClick={indicator}
+          >
+            {genre.genre}
           </li>
         )
       })}
