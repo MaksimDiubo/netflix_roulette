@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 import poster from '../../assets/images/movie-poster-placeholder.png'
 
@@ -17,6 +17,10 @@ export const MovieItem: React.FC<IMovieItemProps> = ({
   date,
   ganre,
 }) => {
+  const [isControlsOpen, setControlsOpen] = useState(false)
+  const visibilityToggle = () => {
+    setControlsOpen(!isControlsOpen)
+  }
   return (
     <div className="movie-item">
       <img
@@ -29,10 +33,26 @@ export const MovieItem: React.FC<IMovieItemProps> = ({
         width="345"
         height="465"
       />
+      <button
+        className="movie-item__controls-show-btn"
+        onClick={visibilityToggle}
+      >
+        .
+      </button>
+      {isControlsOpen ? (
+        <div className="movie-item__controls-modal">
+          <button
+            className="movie-item__controls-close-btn"
+            onClick={visibilityToggle}
+          ></button>
+          <button className="movie-item__control">Edit</button>
+          <button className="movie-item__control">Delite</button>
+        </div>
+      ) : null}
       <div className="movie-item__description">
         <h4 className="movie-item__title">{title}</h4>
         <span className="movie-item__date">{date.slice(0, 4)}</span>
-        <span className=".movie-item__ganre">{ganre.join(', ')}</span>
+        <span className="movie-item__genre">{ganre.join(', ')}</span>
       </div>
     </div>
   )

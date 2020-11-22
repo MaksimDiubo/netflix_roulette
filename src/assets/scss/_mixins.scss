@@ -25,3 +25,46 @@
   outline: none;
   background-color: $color-secondary;
 }
+
+@mixin close-btn(
+  $position,
+  $size,
+  $cross-width: 2px,
+  $cross-height: 33px,
+  $cross-top: 0,
+  $cross-left: 15px
+) {
+  position: absolute;
+  top: $position;
+  right: $position;
+  background: none;
+  color: inherit;
+  border: none;
+  padding: 0;
+  font: inherit;
+  cursor: pointer;
+  outline: inherit;
+  width: $size;
+  height: $size;
+  opacity: 0.3;
+
+  &:hover {
+    opacity: 1;
+  }
+  &:before,
+  &:after {
+    position: absolute;
+    top: $cross-top;
+    left: $cross-left;
+    content: ' ';
+    height: $cross-height;
+    width: $cross-width;
+    background-color: $color-text;
+  }
+  &:before {
+    transform: rotate(45deg);
+  }
+  &:after {
+    transform: rotate(-45deg);
+  }
+}
