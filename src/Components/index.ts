@@ -8,10 +8,13 @@ import { ResultsSelect } from './ResultsSelect'
 import { ResultCount } from './ResultCount'
 import { MoviesList } from './MoviesList'
 import { ErrorBoundary } from './ErrorBoundary'
-import { Modal } from './Modal'
+import { Modal } from './Modals'
 import { ModalInput } from './ModalInput'
 import { ModalDatePicker } from './ModalDatePicker'
 import { ModalSelect } from './ModalSelect'
+import { AddMovieModal } from './Modals'
+import { EditMovieModal } from './Modals'
+import { DeleteMovieModal } from './Modals'
 
 export {
   Layout,
@@ -28,4 +31,7 @@ export {
   ModalInput,
   ModalDatePicker,
   ModalSelect,
+  AddMovieModal,
+  EditMovieModal,
+  DeleteMovieModal,
 }

@@ -11,6 +11,11 @@
 .modal-select__field {
   position: relative;
   @include input;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  padding-right: 45px;
+  text-transform: lowercase;
 }
 
 .modal-select__btn {

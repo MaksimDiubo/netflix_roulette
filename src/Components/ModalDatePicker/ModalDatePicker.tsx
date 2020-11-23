@@ -5,11 +5,12 @@ import './ModalDatePicker.scss'
 interface IModalDatePickerProps {
   title: string
   placeholder?: string
+  value?: string
 }
 
 export const ModalDatePicker: React.FC<IModalDatePickerProps> = ({
   title,
-  placeholder,
+  value,
 }) => {
   const modalInputId = 'modalInputDate'
   return (
@@ -22,6 +23,7 @@ export const ModalDatePicker: React.FC<IModalDatePickerProps> = ({
         type="date"
         name={modalInputId}
         id={modalInputId}
+        value={value}
       />
     </>
   )

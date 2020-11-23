@@ -2,6 +2,8 @@ import React, { useState } from 'react'
 
 import poster from '../../assets/images/movie-poster-placeholder.png'
 
+import { visibilityToggle } from '../../utils/utils'
+
 import './MovieItem.scss'
 
 interface IMovieItemProps {
@@ -9,6 +11,8 @@ interface IMovieItemProps {
   title: string
   date: string
   ganre: Array<string>
+  editModalShow: () => void
+  deleteModalShow: () => void
 }
 
 export const MovieItem: React.FC<IMovieItemProps> = ({
@@ -16,11 +20,11 @@ export const MovieItem: React.FC<IMovieItemProps> = ({
   title,
   date,
   ganre,
+  editModalShow,
+  deleteModalShow,
 }) => {
   const [isControlsOpen, setControlsOpen] = useState(false)
-  const visibilityToggle = () => {
-    setControlsOpen(!isControlsOpen)
-  }
+
   return (
     <div className="movie-item">
       <img
@@ -35,7 +39,7 @@ export const MovieItem: React.FC<IMovieItemProps> = ({
       />
       <button
         className="movie-item__controls-show-btn"
-        onClick={visibilityToggle}
+        onClick={() => visibilityToggle(isControlsOpen, setControlsOpen)}
       >
         .
       </button>
@@ -43,10 +47,26 @@ export const MovieItem: React.FC<IMovieItemProps> = ({
         <div className="movie-item__controls-modal">
           <button
             className="movie-item__controls-close-btn"
-            onClick={visibilityToggle}
+            onClick={() => visibilityToggle(isControlsOpen, setControlsOpen)}
           ></button>
-          <button className="movie-item__control">Edit</button>
-          <button className="movie-item__control">Delite</button>
+          <button
+            className="movie-item__control"
+            onClick={() => {
+              editModalShow()
+              visibilityToggle(isControlsOpen, setControlsOpen)
+            }}
+          >
+            Edit
+          </button>
+          <button
+            className="movie-item__control"
+            onClick={() => {
+              deleteModalShow()
+              visibilityToggle(isControlsOpen, setControlsOpen)
+            }}
+          >
+            Delite
+          </button>
         </div>
       ) : null}
       <div className="movie-item__description">

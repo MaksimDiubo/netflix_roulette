@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { Button } from '../../Components'
+import { Button } from '../..'
 
 import './Modal.scss'
 

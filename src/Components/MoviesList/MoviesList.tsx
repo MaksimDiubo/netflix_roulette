@@ -53,7 +53,15 @@ const fakeData = [
   },
 ]
 
-export const MoviesList: React.FC = () => {
+interface IModalListProps {
+  editModalShow: () => void
+  deleteModalShow: () => void
+}
+
+export const MoviesList: React.FC<IModalListProps> = ({
+  editModalShow,
+  deleteModalShow,
+}) => {
   return (
     <>
       {fakeData.map((item) => (
@@ -63,6 +71,8 @@ export const MoviesList: React.FC = () => {
           title={item.title}
           date={item.release_date}
           ganre={item.genres}
+          editModalShow={editModalShow}
+          deleteModalShow={deleteModalShow}
         />
       ))}
     </>

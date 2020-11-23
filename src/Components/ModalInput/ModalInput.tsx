@@ -5,11 +5,15 @@ import './ModalInput.scss'
 interface IModalInputProps {
   title: string
   placeholder?: string
+  disabled?: boolean
+  value?: string
 }
 
 export const ModalInput: React.FC<IModalInputProps> = ({
   title,
   placeholder,
+  disabled,
+  value,
 }) => {
   const modalInputId = 'modalInput'
   return (
@@ -24,6 +28,8 @@ export const ModalInput: React.FC<IModalInputProps> = ({
         id={modalInputId}
         autoComplete="off"
         placeholder={placeholder}
+        disabled={disabled}
+        value={value}
       />
     </>
   )

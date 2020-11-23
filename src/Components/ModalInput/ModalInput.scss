@@ -7,4 +7,12 @@
 
 .modal-input__input {
   @include input;
+
+  &:disabled {
+    padding: 0;
+    line-height: 2.5rem;
+    height: 25px;
+    background-color: transparent;
+    text-transform: uppercase;
+  }
 }

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 import {
   Wrapper,
@@ -7,11 +7,17 @@ import {
   ResultsSelect,
   ResultCount,
   MoviesList,
+  EditMovieModal,
+  DeleteMovieModal,
 } from '../../Components'
+import { visibilityToggle } from '../../utils/utils'
 
 import './Main.scss'
 
 export const Main = () => {
+  const [showEditMovie, setShowEditMovie] = useState(false)
+  const [showDeleteMovie, setShowDeleteMovie] = useState(false)
+
   return (
     <div className="main">
       <Wrapper>
@@ -21,9 +27,28 @@ export const Main = () => {
         </Layout>
         <ResultCount />
         <Layout columns="3">
-          <MoviesList />
+          <MoviesList
+            editModalShow={() => {
+              visibilityToggle(showEditMovie, setShowEditMovie)
+            }}
+            deleteModalShow={() => {
+              visibilityToggle(showDeleteMovie, setShowDeleteMovie)
+            }}
+          />
         </Layout>
       </Wrapper>
+      <EditMovieModal
+        isOpen={showEditMovie}
+        visibilityToggle={() =>
+          visibilityToggle(showEditMovie, setShowEditMovie)
+        }
+      />
+      <DeleteMovieModal
+        isOpen={showDeleteMovie}
+        visibilityToggle={() =>
+          visibilityToggle(showDeleteMovie, setShowDeleteMovie)
+        }
+      />
     </div>
   )
 }
