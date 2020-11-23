@@ -3,7 +3,7 @@ import React from 'react'
 import './ModalInput.scss'
 
 interface IModalInputProps {
-  title: string
+  title?: string
   placeholder?: string
   disabled?: boolean
   value?: string

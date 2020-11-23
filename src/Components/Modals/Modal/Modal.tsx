@@ -32,7 +32,7 @@ export const Modal: React.FC<IModalProps> = ({
           {cancelBtnText ? (
             <Button variant="outlined">{cancelBtnText}</Button>
           ) : null}
-          {okBtnText ? <Button>{okBtnText}</Button> : null}
+          {okBtnText ? <Button onClick={onOk}>{okBtnText}</Button> : null}
         </div>
       </div>
     </div>

@@ -3,7 +3,6 @@
 .logo {
   color: $color-primary;
   font-size: 2rem;
-  z-index: 200;
 }
 
 .visually-hidden {
@@ -12,4 +11,8 @@
   width: 1px;
   height: 1px;
   margin: -1px;
+
+  & ~ .logo {
+    z-index: 200;
+  }
 }

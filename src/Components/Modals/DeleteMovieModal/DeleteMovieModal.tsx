@@ -1,11 +1,8 @@
 import React from 'react'
 
-import {
-  Modal,
-  ModalInput,
-  ModalDatePicker,
-  ModalSelect,
-} from '../..'
+import { Modal } from '../..'
+
+import './DeleteMovieModal.scss'
 
 interface IDeleteMovieModalProps {
   isOpen: boolean
@@ -20,17 +17,13 @@ export const DeleteMovieModal: React.FC<IDeleteMovieModalProps> = ({
     <Modal
       isOpen={isOpen}
       title="add movie"
-      okBtnText="submit"
-      cancelBtnText="reset"
+      okBtnText="confirm"
       onOk={visibilityToggle}
       onCancel={visibilityToggle}
     >
-      <ModalInput title="title" placeholder="Title here" disabled />
-      <ModalDatePicker title="release date" />
-      <ModalInput title="movie url" placeholder="Movie URL here" />
-      <ModalSelect />
-      <ModalInput title="overview" placeholder="Overview here" />
-      <ModalInput title="runtime" placeholder="Runtime here" />
+      <span className="delete-movie-modal__content">
+        Are you shure you want to delete this movie?
+      </span>
     </Modal>
   )
 }
