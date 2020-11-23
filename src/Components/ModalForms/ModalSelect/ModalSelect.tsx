@@ -1,8 +1,8 @@
 import React, { useState, ChangeEvent } from 'react'
 import classnames from 'classnames'
 
-import genres from '../../data/genres.json'
-import { visibilityToggle } from '../../utils/utils'
+import genres from '../../../data/genres.json'
+import { visibilityToggle } from '../../../utils/utils'
 
 import './ModalSelect.scss'
 
