@@ -15,7 +15,7 @@ interface IEditMovieModalProps {
 const fakeData = {
   movieId: 'mo32820th',
   title: 'Moana',
-  releaseDate: '31-03-2018',
+  releaseDate: '2018-03-30',
   movieURL: 'www.moana.com',
   genre: 'comedy',
   overview: 'overview text goes here',

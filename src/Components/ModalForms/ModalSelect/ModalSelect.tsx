@@ -1,4 +1,4 @@
-import React, { useState, useEffect, ChangeEvent } from 'react'
+import React, { useState, ChangeEvent } from 'react'
 import classnames from 'classnames'
 
 import genres from '../../../data/genres.json'
