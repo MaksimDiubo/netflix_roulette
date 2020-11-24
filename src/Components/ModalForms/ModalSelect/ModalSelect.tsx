@@ -16,8 +16,6 @@ export const ModalSelect: React.FC<IModalSelectProps> = ({ checkedItems }) => {
     checkedItems?.split(',') || []
   )
 
-  useEffect(() => {})
-
   const handleChecked = (event: ChangeEvent<HTMLInputElement>) => {
     event.target.checked
       ? setCheckedGenres((genres) => [
@@ -29,7 +27,6 @@ export const ModalSelect: React.FC<IModalSelectProps> = ({ checkedItems }) => {
             (genre) => genre !== event.target.name.toLowerCase()
           )
         )
-    console.log(checkedGenres)
   }
 
   return (
