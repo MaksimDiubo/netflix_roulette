@@ -42,7 +42,6 @@
 
 .modal-select__checkboxes {
   box-sizing: border-box;
-  visibility: hidden;
   padding: 20px;
   position: absolute;
   width: 100%;
@@ -50,10 +49,6 @@
   box-shadow: 5px 5px 30px;
   display: flex;
   flex-direction: column;
-
-  &_visible {
-    visibility: visible;
-  }
 }
 
 .modal-select__checkbox-container {
