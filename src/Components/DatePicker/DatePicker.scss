@@ -1,0 +1,10 @@
+@import '../../assets/scss/variables';
+@import '../../assets/scss/mixins';
+
+.date-picer__label {
+  @include input-label;
+}
+
+.date-picer__input {
+  @include input;
+}

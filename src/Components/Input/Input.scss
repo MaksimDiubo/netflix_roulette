@@ -1,0 +1,18 @@
+@import '../../assets/scss/variables';
+@import '../../assets/scss/mixins';
+
+.input__label {
+  @include input-label;
+}
+
+.input__input {
+  @include input;
+
+  &:disabled {
+    display: inline-block;
+    padding: 0;
+    line-height: 2.5rem;
+    height: 25px;
+    background-color: transparent;
+  }
+}

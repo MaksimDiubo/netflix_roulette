@@ -1,0 +1,52 @@
+@import '../../assets/scss/mixins';
+
+.select {
+  position: relative;
+}
+
+.select__title {
+  @include input-label;
+}
+
+.select__text {
+  position: relative;
+  @include input;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  padding-right: 45px;
+  text-transform: lowercase;
+}
+
+.select__options {
+  box-sizing: border-box;
+  padding: 20px;
+  position: absolute;
+  width: 100%;
+  background-color: $color-background;
+  box-shadow: 5px 5px 30px;
+  display: flex;
+  flex-direction: column;
+}
+
+.select__arrow {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  width: 30px;
+  height: 20px;
+  background: none;
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' version='1.1' height='10px' width='10px'%3E%3Ctext x='0' y='10px' fill='%23f65261'%3E%E2%96%BE%3C/text%3E%3C/svg%3E");
+  background-size: 30px 20px;
+  background-repeat: no-repeat;
+  background-position: 0 0;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  outline: none;
+
+  &_rotate {
+    transform: rotate(180deg);
+    background-position: -10px;
+  }
+}

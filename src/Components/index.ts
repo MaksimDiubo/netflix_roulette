@@ -8,13 +8,16 @@ import { ResultsSelect } from './ResultsSelect'
 import { ResultCount } from './ResultCount'
 import { MoviesList } from './MoviesList'
 import { ErrorBoundary } from './ErrorBoundary'
-import { Modal } from './Modals'
-import { ModalInput } from './ModalForms'
-import { ModalDatePicker } from './ModalForms'
-import { ModalSelect } from './ModalForms'
-import { AddMovieModal } from './Modals'
-import { EditMovieModal } from './Modals'
-import { DeleteMovieModal } from './Modals'
+import { Modal } from './Modal'
+import { Input } from './Input'
+import { DatePicker } from './DatePicker'
+import { Select } from './Select'
+import { AddMovieModal } from './AddMovieModal'
+import { EditMovieModal } from './EditMovieModal'
+import { DeleteMovieModal } from './DeleteMovieModal'
+import { Settings } from './Settings'
+import { Checkbox } from './Checkbox'
+import { CheckboxesList } from './CheckboxesList'
 
 export {
   Layout,
@@ -28,10 +31,13 @@ export {
   MoviesList,
   ErrorBoundary,
   Modal,
-  ModalInput,
-  ModalDatePicker,
-  ModalSelect,
+  Input,
+  DatePicker,
+  Select,
   AddMovieModal,
   EditMovieModal,
   DeleteMovieModal,
+  Settings,
+  Checkbox,
+  CheckboxesList,
 }

@@ -1,4 +1,5 @@
-import React, { useState } from 'react'
+import React from 'react'
+import { useToggle } from '../../hooks'
 
 import {
   Wrapper,
@@ -10,13 +11,12 @@ import {
   EditMovieModal,
   DeleteMovieModal,
 } from '../../Components'
-import { visibilityToggle } from '../../utils/utils'
 
 import './Main.scss'
 
 export const Main = () => {
-  const [showEditMovie, setShowEditMovie] = useState(false)
-  const [showDeleteMovie, setShowDeleteMovie] = useState(false)
+  const [isEditModalOpen, setIsEditModalOpen] = useToggle(false)
+  const [isDeleteModalOpen, setIsDeleteModalOpen] = useToggle(false)
 
   return (
     <div className="main">
@@ -28,26 +28,18 @@ export const Main = () => {
         <ResultCount />
         <Layout columns="3">
           <MoviesList
-            editModalShow={() => {
-              visibilityToggle(showEditMovie, setShowEditMovie)
-            }}
-            deleteModalShow={() => {
-              visibilityToggle(showDeleteMovie, setShowDeleteMovie)
-            }}
+            onEditModalOpen={setIsEditModalOpen}
+            onDeleteModalOpen={setIsDeleteModalOpen}
           />
         </Layout>
       </Wrapper>
       <EditMovieModal
-        isOpen={showEditMovie}
-        visibilityToggle={() =>
-          visibilityToggle(showEditMovie, setShowEditMovie)
-        }
+        isOpen={isEditModalOpen}
+        handleClose={setIsEditModalOpen}
       />
       <DeleteMovieModal
-        isOpen={showDeleteMovie}
-        visibilityToggle={() =>
-          visibilityToggle(showDeleteMovie, setShowDeleteMovie)
-        }
+        isOpen={isDeleteModalOpen}
+        handleClose={setIsDeleteModalOpen}
       />
     </div>
   )

@@ -54,13 +54,13 @@ const fakeData = [
 ]
 
 interface IModalListProps {
-  editModalShow: () => void
-  deleteModalShow: () => void
+  onEditModalOpen: () => void
+  onDeleteModalOpen: () => void
 }
 
 export const MoviesList: React.FC<IModalListProps> = ({
-  editModalShow,
-  deleteModalShow,
+  onEditModalOpen,
+  onDeleteModalOpen,
 }) => {
   return (
     <>
@@ -71,8 +71,8 @@ export const MoviesList: React.FC<IModalListProps> = ({
           title={item.title}
           date={item.release_date}
           ganre={item.genres}
-          editModalShow={editModalShow}
-          deleteModalShow={deleteModalShow}
+          onEditModalOpen={onEditModalOpen}
+          onDeleteModalOpen={onDeleteModalOpen}
         />
       ))}
     </>

@@ -1,8 +1,8 @@
-import React, { useState } from 'react'
+import React from 'react'
+
+import { Settings } from '../Settings'
 
 import poster from '../../assets/images/movie-poster-placeholder.png'
-
-import { visibilityToggle } from '../../utils/utils'
 
 import './MovieItem.scss'
 
@@ -11,8 +11,8 @@ interface IMovieItemProps {
   title: string
   date: string
   ganre: Array<string>
-  editModalShow: () => void
-  deleteModalShow: () => void
+  onEditModalOpen: () => void
+  onDeleteModalOpen: () => void
 }
 
 export const MovieItem: React.FC<IMovieItemProps> = ({
@@ -20,11 +20,9 @@ export const MovieItem: React.FC<IMovieItemProps> = ({
   title,
   date,
   ganre,
-  editModalShow,
-  deleteModalShow,
+  onEditModalOpen,
+  onDeleteModalOpen,
 }) => {
-  const [isControlsOpen, setControlsOpen] = useState(false)
-
   return (
     <div className="movie-item">
       <img
@@ -37,38 +35,10 @@ export const MovieItem: React.FC<IMovieItemProps> = ({
         width="345"
         height="465"
       />
-      <button
-        className="movie-item__controls-show-btn"
-        onClick={() => visibilityToggle(isControlsOpen, setControlsOpen)}
-      >
-        .
-      </button>
-      {isControlsOpen ? (
-        <div className="movie-item__controls-modal">
-          <button
-            className="movie-item__controls-close-btn"
-            onClick={() => visibilityToggle(isControlsOpen, setControlsOpen)}
-          ></button>
-          <button
-            className="movie-item__control"
-            onClick={() => {
-              editModalShow()
-              visibilityToggle(isControlsOpen, setControlsOpen)
-            }}
-          >
-            Edit
-          </button>
-          <button
-            className="movie-item__control"
-            onClick={() => {
-              deleteModalShow()
-              visibilityToggle(isControlsOpen, setControlsOpen)
-            }}
-          >
-            Delite
-          </button>
-        </div>
-      ) : null}
+      <Settings
+        onEditModalOpen={onEditModalOpen}
+        onDeleteModalOpen={onDeleteModalOpen}
+      />
       <div className="movie-item__description">
         <h4 className="movie-item__title">{title}</h4>
         <span className="movie-item__date">{date.slice(0, 4)}</span>

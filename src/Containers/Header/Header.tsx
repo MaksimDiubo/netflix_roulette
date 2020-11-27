@@ -1,4 +1,5 @@
-import React, { useState } from 'react'
+import React from 'react'
+import { useToggle } from '../../hooks'
 
 import {
   Layout,
@@ -9,12 +10,10 @@ import {
   AddMovieModal,
 } from '../../Components'
 
-import { visibilityToggle } from '../../utils/utils'
-
 import './Header.scss'
 
 export const Header = () => {
-  const [showAddMovie, setShowAddMovie] = useState(false)
+  const [isAddModalOpen, setIsAddModalOpen] = useToggle(false)
 
   return (
     <div className="header">
@@ -24,17 +23,14 @@ export const Header = () => {
           <Button
             color="secondary"
             value="+ add move"
-            onClick={() => visibilityToggle(showAddMovie, setShowAddMovie)}
+            onClick={setIsAddModalOpen}
           >
             + add move
           </Button>
         </Layout>
         <SearchForm />
       </Wrapper>
-      <AddMovieModal
-        isOpen={showAddMovie}
-        visibilityToggle={() => visibilityToggle(showAddMovie, setShowAddMovie)}
-      />
+      <AddMovieModal isOpen={isAddModalOpen} onClose={setIsAddModalOpen} />
     </div>
   )
 }
