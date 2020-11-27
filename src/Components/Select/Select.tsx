@@ -12,16 +12,18 @@ interface ISelectProps {
 }
 
 export const Select: React.FC<ISelectProps> = memo(
-  ({ defaultCheckedItems = [] }) => {
+  ({ defaultCheckedItems }) => {
     const [isOpen, setIsOpen] = useToggle(false)
-    const [chekedItems, setChekedItems] = useState([] as string[])
+    const [chekedItems, setChekedItems] = useState(
+      defaultCheckedItems || ([] as string[])
+    )
 
     useEffect(() => {
-      setChekedItems(defaultCheckedItems)
+      defaultCheckedItems && setChekedItems(defaultCheckedItems)
     }, [defaultCheckedItems])
 
     const selectTitle = chekedItems.length
-      ? chekedItems.join(',')
+      ? chekedItems.join(', ')
       : 'Select genre'
 
     const handleChange = (event: ChangeEvent<HTMLInputElement>): void => {
