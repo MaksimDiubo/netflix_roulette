@@ -1,3 +1,4 @@
 import { Details } from './Details'
+import detailsSlice from './detailsSlice'
 
-export { Details }
+export { Details, detailsSlice }

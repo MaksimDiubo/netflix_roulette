@@ -1,35 +1,49 @@
-import React from 'react'
-
+import React, { useState, ChangeEvent } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { RootState } from '../../store/rootReducer'
+import { setEditModalOpen } from './editMovieSlice'
+import { editMovie } from '../../Containers/Main/moviesSlice'
 import { Modal, Input, DatePicker, Select } from '../../Components'
+import { IMovie } from '../../models'
 
-interface IEditMovieModalProps {
-  isOpen: boolean
-  handleClose: () => void
-}
-
-const fakeData = {
-  movieId: 'mo32820th',
-  title: 'Moana',
-  releaseDate: '2018-03-30',
-  movieURL: 'www.moana.com',
-  genre: ['Comedy'],
-  overview: 'overview text goes here',
-  runtime: 'runtime goes here',
-}
-
-export const EditMovieModal: React.FC<IEditMovieModalProps> = ({
-  isOpen,
-  handleClose,
-}) => {
+export const EditMovieModal = () => {
+  const [editedMovie, setEditedMovie] = useState({} as IMovie)
+  const dispatch = useDispatch()
   const {
-    movieId,
+    editMovie: { isOpen, movie },
+  } = useSelector((state: RootState) => state)
+
+  const handleOk = () => {
+    dispatch(editMovie(editedMovie))
+    dispatch(setEditModalOpen())
+  }
+
+  const handleClose = () => {
+    dispatch(setEditModalOpen())
+  }
+
+  const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
+    // const { target } = event
+    console.log(event)
+  }
+
+  if (!movie) {
+    return (
+      <span className="delete-movie-modal__content">
+        Something went wrong. Close the modal and try again.
+      </span>
+    )
+  }
+
+  const {
     title,
-    releaseDate,
-    movieURL,
-    genre,
+    release_date,
+    poster_path,
     overview,
     runtime,
-  } = fakeData
+    genres,
+    id,
+  } = movie
 
   return (
     <Modal
@@ -37,16 +51,16 @@ export const EditMovieModal: React.FC<IEditMovieModalProps> = ({
       title="edit movie"
       okBtnText="save"
       cancelBtnText="reset"
-      onOk={handleClose}
+      onOk={handleOk}
       onCancel={handleClose}
     >
-      <Input title="movie ID" value={movieId} disabled />
-      <Input title="title" value={title} />
-      <DatePicker title="release date" value={releaseDate} />
-      <Input title="movie url" value={movieURL} />
-      <Select defaultCheckedItems={genre} />
-      <Input title="overview" value={overview} />
-      <Input title="runtime" value={runtime} />
+      <Input title="movie ID" value={id} disabled />
+      <Input title="title" value={title} onChange={handleChange} name="title" />
+      <DatePicker title="release date" value={release_date} />
+      <Input title="movie url" value={poster_path} name="poster_path" />
+      <Select defaultCheckedItems={genres} />
+      <Input title="overview" value={overview} name="overview" />
+      <Input title="runtime" value={runtime} name="runtime" />
     </Modal>
   )
 }

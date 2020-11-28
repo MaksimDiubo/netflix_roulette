@@ -1,5 +1,8 @@
 import React from 'react'
-import { useToggle } from '../../hooks'
+import { useDispatch, useSelector } from 'react-redux'
+import { RootState } from '../../store/rootReducer'
+import { setIsAddMovieOpen } from '../../Components/AddMovieModal/addMovieSlice'
+import { setIsDetailsOpen } from '../../Components/Details/detailsSlice'
 
 import {
   Layout,
@@ -8,12 +11,37 @@ import {
   SearchForm,
   Wrapper,
   AddMovieModal,
+  Details,
 } from '../../Components'
 
 import './Header.scss'
 
 export const Header = () => {
-  const [isAddModalOpen, setIsAddModalOpen] = useToggle(false)
+  const dispatch = useDispatch()
+
+  const {
+    details: { isOpen, movie },
+  } = useSelector((state: RootState) => state)
+
+  const {
+    addMovie: { isOpen: isAddModalOpen },
+  } = useSelector((state: RootState) => state)
+
+  const handleAddMovieClose = () => {
+    dispatch(setIsAddMovieOpen())
+  }
+
+  const handleDetailsClose = () => {
+    dispatch(setIsDetailsOpen(false))
+  }
+
+  if (isOpen && movie) {
+    return (
+      <div className="header">
+        <Details movie={movie} handleClose={handleDetailsClose} />
+      </div>
+    )
+  }
 
   return (
     <div className="header">
@@ -23,14 +51,14 @@ export const Header = () => {
           <Button
             color="secondary"
             value="+ add move"
-            onClick={setIsAddModalOpen}
+            onClick={handleAddMovieClose}
           >
             + add move
           </Button>
         </Layout>
         <SearchForm />
       </Wrapper>
-      <AddMovieModal isOpen={isAddModalOpen} onClose={setIsAddModalOpen} />
+      <AddMovieModal isOpen={isAddModalOpen} onClose={handleAddMovieClose} />
     </div>
   )
 }

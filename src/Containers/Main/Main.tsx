@@ -1,22 +1,30 @@
-import React from 'react'
-import { useToggle } from '../../hooks'
+import React, { useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { RootState } from '../../store/rootReducer'
+import { fetchMovies } from './moviesSlice'
 
 import {
   Wrapper,
   Layout,
   ResultsFilter,
   ResultsSelect,
-  ResultCount,
   MoviesList,
   EditMovieModal,
   DeleteMovieModal,
+  Loader,
 } from '../../Components'
 
 import './Main.scss'
 
 export const Main = () => {
-  const [isEditModalOpen, setIsEditModalOpen] = useToggle(false)
-  const [isDeleteModalOpen, setIsDeleteModalOpen] = useToggle(false)
+  const dispatch = useDispatch()
+  const {
+    movies: { isLoading, totalAmount, movies },
+  } = useSelector((state: RootState) => state)
+
+  useEffect(() => {
+    dispatch(fetchMovies())
+  }, [dispatch])
 
   return (
     <div className="main">
@@ -25,22 +33,15 @@ export const Main = () => {
           <ResultsFilter />
           <ResultsSelect />
         </Layout>
-        <ResultCount />
-        <Layout columns="3">
-          <MoviesList
-            onEditModalOpen={setIsEditModalOpen}
-            onDeleteModalOpen={setIsDeleteModalOpen}
-          />
-        </Layout>
+
+        {isLoading ? (
+          <Loader />
+        ) : (
+          <MoviesList totalAmount={totalAmount} movies={movies} />
+        )}
       </Wrapper>
-      <EditMovieModal
-        isOpen={isEditModalOpen}
-        handleClose={setIsEditModalOpen}
-      />
-      <DeleteMovieModal
-        isOpen={isDeleteModalOpen}
-        handleClose={setIsDeleteModalOpen}
-      />
+      <EditMovieModal />
+      <DeleteMovieModal />
     </div>
   )
 }

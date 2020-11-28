@@ -1,3 +1,4 @@
 import { DeleteMovieModal } from './DeleteMovieModal'
+import deleteMovieSlice from './deleteMovieSlice'
 
-export { DeleteMovieModal }
+export { DeleteMovieModal, deleteMovieSlice }

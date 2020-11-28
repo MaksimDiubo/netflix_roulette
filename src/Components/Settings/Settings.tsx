@@ -1,26 +1,35 @@
 import React from 'react'
 import { useToggle } from '../../hooks'
+import { useDispatch } from 'react-redux'
+import {
+  setEditModalOpen,
+  setEditMovieData,
+} from '../EditMovieModal/editMovieSlice'
+import {
+  setDeleteModalOpen,
+  setDeleteMovieId,
+} from '../DeleteMovieModal/deleteMovieSlice'
+import { IMovie } from '../../models'
 
 import './Settings.scss'
 
 interface ISettingsProps {
-  onEditModalOpen: () => void
-  onDeleteModalOpen: () => void
+  movie: IMovie
 }
 
-export const Settings: React.FC<ISettingsProps> = ({
-  onEditModalOpen,
-  onDeleteModalOpen,
-}) => {
+export const Settings: React.FC<ISettingsProps> = ({ movie }) => {
   const [isOpen, setIsOpen] = useToggle(false)
+  const dispatch = useDispatch()
 
   const handleEditMovieOpen = () => {
-    onEditModalOpen()
+    dispatch(setEditMovieData(movie))
+    dispatch(setEditModalOpen())
     setIsOpen()
   }
 
   const handleDeleteMovieOpen = () => {
-    onDeleteModalOpen()
+    dispatch(setDeleteMovieId(movie.id))
+    dispatch(setDeleteModalOpen())
     setIsOpen()
   }
 

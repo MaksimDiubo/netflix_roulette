@@ -1,7 +1,7 @@
 import { URL } from '../constants'
 import { IMovie } from '../models'
 
-export const updateMovie = async (id: string, data: IMovie) => {
+export const updateData = async (id: number, data: IMovie) => {
   fetch(`${URL}/${id}`, {
     method: 'PUT',
     headers: {
@@ -11,20 +11,22 @@ export const updateMovie = async (id: string, data: IMovie) => {
   })
 }
 
-export const getMovies = async (serchValue: string) => {
-  const res = await fetch(`${URL}?search=${serchValue}&searchBy=title`, {
+export const getData = async (serchValue?: string) => {
+  const url = serchValue ? `${URL}?search=${serchValue}&searchBy=title` : URL
+  const res = await fetch(url, {
     headers: {
       'Access-Control-Allow-Origin': '*',
       'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, PATCH',
     },
   })
   if (res.status === 200) {
-    return res.json()
+    const result = await res.json()
+    return result
   }
   throw Error('error fetching movies')
 }
 
-export const addMovie = async (data: IMovie) => {
+export const addData = async (data: IMovie) => {
   const res = await fetch(URL, {
     method: 'POST',
     headers: {
@@ -34,14 +36,16 @@ export const addMovie = async (data: IMovie) => {
     body: JSON.stringify(data),
   })
   if (res.status === 200 || 204) {
-    return res.json()
+    const data = await res.json()
+    return data
   }
   throw Error(`error fetching movies`)
 }
 
-export const deleteMovie = async (movieId: number) => {
+export const deleteData = async (movieId: number) => {
   const res = await fetch(`${URL}/${movieId}`, {
     method: 'DELETE',
   })
-  return res.json()
+  const data = await res.json()
+  return data
 }

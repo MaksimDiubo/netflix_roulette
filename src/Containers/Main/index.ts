@@ -1,3 +1,4 @@
 import { Main } from './Main'
+import moviesSlice from './moviesSlice'
 
-export { Main }
+export { Main, moviesSlice }

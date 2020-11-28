@@ -2,10 +2,14 @@ import React from 'react'
 
 import './ResultCount.scss'
 
-export const ResultCount = () => {
+interface IResultCount {
+  totalAmount: number
+}
+
+export const ResultCount: React.FC<IResultCount> = ({ totalAmount }) => {
   return (
     <span className="result-count">
-      <b>39 </b>movies found
+      <b>{totalAmount} </b>movies found
     </span>
   )
 }

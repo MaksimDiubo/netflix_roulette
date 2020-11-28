@@ -1,3 +1,4 @@
 import { EditMovieModal } from './EditMovieModal'
+import editMovieSlice from './editMovieSlice'
 
-export { EditMovieModal }
+export { EditMovieModal, editMovieSlice }

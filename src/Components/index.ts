@@ -7,6 +7,7 @@ import { ResultsFilter } from './ResultsFilter'
 import { ResultsSelect } from './ResultsSelect'
 import { ResultCount } from './ResultCount'
 import { MoviesList } from './MoviesList'
+import { MovieItem } from './MovieItem'
 import { ErrorBoundary } from './ErrorBoundary'
 import { Modal } from './Modal'
 import { Input } from './Input'
@@ -18,6 +19,8 @@ import { DeleteMovieModal } from './DeleteMovieModal'
 import { Settings } from './Settings'
 import { Checkbox } from './Checkbox'
 import { CheckboxesList } from './CheckboxesList'
+import { Details } from './Details'
+import { Loader } from './Loader'
 
 export {
   Layout,
@@ -29,6 +32,7 @@ export {
   ResultsSelect,
   ResultCount,
   MoviesList,
+  MovieItem,
   ErrorBoundary,
   Modal,
   Input,
@@ -40,4 +44,6 @@ export {
   Settings,
   Checkbox,
   CheckboxesList,
+  Details,
+  Loader,
 }

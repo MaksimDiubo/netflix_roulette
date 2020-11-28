@@ -9,6 +9,7 @@ interface IDatePickerProps {
 }
 
 export const DatePicker: React.FC<IDatePickerProps> = ({ title, value }) => {
+  const defaultDate = new Date().toISOString().slice(0, 10)
   const datePickerId = 'datePickerId'
   return (
     <>
@@ -20,7 +21,7 @@ export const DatePicker: React.FC<IDatePickerProps> = ({ title, value }) => {
         type="date"
         name={datePickerId}
         id={datePickerId}
-        value={value}
+        value={value || defaultDate}
       />
     </>
   )

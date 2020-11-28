@@ -1,20 +1,14 @@
 import React from 'react'
 import { Wrapper, Layout, Logo } from '../../Components'
+import { IMovie } from '../../models'
 
 import poster from '../../assets/images/movie-poster-placeholder.png'
 
 import './Details.scss'
 
 interface IDetailsProps {
-  movie: {
-    title: string
-    tagline: string
-    vote_average: number
-    release_date: string
-    poster_path: string
-    overview: string
-    runtime: number
-  }
+  movie: IMovie
+  handleClose: () => void
 }
 
 export const Details: React.FC<IDetailsProps> = ({
@@ -27,13 +21,14 @@ export const Details: React.FC<IDetailsProps> = ({
     overview,
     runtime,
   },
+  handleClose,
 }) => {
   return (
     <div className="details">
       <Wrapper>
         <Layout columns="2">
           <Logo />
-          <button className="serch-btn">
+          <button className="serch-btn" onClick={handleClose}>
             <svg className="serch-btn__icon" viewBox="0 0 24 24">
               <path
                 fill="rgb(246, 82, 97)"
