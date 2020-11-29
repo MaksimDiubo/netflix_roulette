@@ -5,7 +5,7 @@ import './Checkbox.scss'
 interface ICheckboxProps {
   genre: string
   onChange: (event: ChangeEvent<HTMLInputElement>) => void
-  defaultChecked: boolean
+  defaultChecked?: boolean
 }
 
 export const Checkbox: React.FC<ICheckboxProps> = ({
@@ -20,7 +20,7 @@ export const Checkbox: React.FC<ICheckboxProps> = ({
         id={genre}
         name={genre}
         onChange={onChange}
-        defaultChecked={defaultChecked}
+        defaultChecked={defaultChecked || false}
       />
       <span className="checkbox__checkmark"></span>
       {genre}

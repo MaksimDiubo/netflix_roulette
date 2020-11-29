@@ -74,7 +74,7 @@ export const fetchMovies = (serchValue?: string): AppThunk => async (
 
 export const deleteMovie = (movieId: number): AppThunk => async (dispatch) => {
   try {
-    deleteData(movieId)
+    await deleteData(movieId)
     dispatch(removeMovie(movieId))
   } catch (err) {
     dispatch(getDataFailure(err.toString()))
@@ -84,7 +84,7 @@ export const deleteMovie = (movieId: number): AppThunk => async (dispatch) => {
 export const editMovie = (movie: IMovie): AppThunk => async (dispatch) => {
   try {
     const { id } = movie
-    // updateData(id, movie)
+    // await updateData(id, movie)
     dispatch(updateMovie(movie))
   } catch (err) {
     dispatch(getDataFailure(err.toString()))

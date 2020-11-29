@@ -32,7 +32,7 @@ export const Input: React.FC<IInputProps> = ({
         autoComplete="off"
         placeholder={placeholder}
         disabled={disabled}
-        value={value}
+        value={value || ''}
         onChange={onChange}
       />
     </>

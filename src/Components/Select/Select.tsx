@@ -9,7 +9,7 @@ import './Select.scss'
 
 interface ISelectProps {
   defaultCheckedItems?: string[]
-  selectName: string
+  name?: string
   onChange: (event: ChangeEvent<HTMLInputElement>) => void
 }
 

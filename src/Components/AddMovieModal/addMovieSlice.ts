@@ -34,8 +34,9 @@ export const {
 
 export const addMovieItem = (movie: IMovie): AppThunk => async (dispatch) => {
   try {
-    addData(movie)
-    setIsAddMovieOpen()
+    // await addData(movie)
+    dispatch(addNewMovie(movie))
+    dispatch(setIsAddMovieOpen())
   } catch (err) {
     dispatch(getDataFailure(err.toString()))
   }

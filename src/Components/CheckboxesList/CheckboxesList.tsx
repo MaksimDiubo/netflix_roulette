@@ -7,7 +7,7 @@ import { genres } from '../../data'
 import './CheckboxesList.scss'
 
 interface ICheckboxesListProps {
-  chekedItems: string[]
+  chekedItems?: string[]
   onChange: (event: ChangeEvent<HTMLInputElement>) => void
 }
 
@@ -19,7 +19,7 @@ export const CheckboxesList: React.FC<ICheckboxesListProps> = ({
     <>
       {genres.map((item) => {
         const { id, genre } = item
-        const defaultChecked = chekedItems.includes(genre)
+        const defaultChecked = chekedItems?.includes(genre)
         return (
           <Checkbox
             key={id}

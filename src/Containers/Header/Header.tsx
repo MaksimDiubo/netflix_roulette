@@ -23,10 +23,6 @@ export const Header = () => {
     details: { isOpen, movie },
   } = useSelector((state: RootState) => state)
 
-  const {
-    addMovie: { isOpen: isAddModalOpen },
-  } = useSelector((state: RootState) => state)
-
   const handleAddMovieClose = () => {
     dispatch(setIsAddMovieOpen())
   }
@@ -58,7 +54,7 @@ export const Header = () => {
         </Layout>
         <SearchForm />
       </Wrapper>
-      <AddMovieModal isOpen={isAddModalOpen} onClose={handleAddMovieClose} />
+      <AddMovieModal />
     </div>
   )
 }

@@ -29,7 +29,7 @@ export const DeleteMovieModal = () => {
       title="add movie"
       okBtnText="confirm"
       onOk={handleOk}
-      onReset={handleClose}
+      onClose={handleClose}
     >
       <span className="delete-movie-modal__content">
         Are you shure you want to delete this movie?

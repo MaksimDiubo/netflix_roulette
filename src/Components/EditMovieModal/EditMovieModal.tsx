@@ -88,17 +88,8 @@ export const EditMovieModal = () => {
         onChange={handleChange}
         name="poster_path"
       />
-      <Select
-        defaultCheckedItems={genres}
-        onChange={handleCheckboxChange}
-        selectName="genres"
-      />
-      <Input
-        title="overview"
-        value={overview}
-        onChange={handleChange}
-        name="overview"
-      />
+      <Select defaultCheckedItems={genres} onChange={handleCheckboxChange} />
+      <Input title="overview" value={overview} onChange={handleChange} />
       <Input
         title="runtime"
         value={runtime}
