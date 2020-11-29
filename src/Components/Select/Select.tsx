@@ -9,10 +9,12 @@ import './Select.scss'
 
 interface ISelectProps {
   defaultCheckedItems?: string[]
+  selectName: string
+  onChange: (event: ChangeEvent<HTMLInputElement>) => void
 }
 
 export const Select: React.FC<ISelectProps> = memo(
-  ({ defaultCheckedItems }) => {
+  ({ defaultCheckedItems, onChange }) => {
     const [isOpen, setIsOpen] = useToggle(false)
     const [chekedItems, setChekedItems] = useState(
       defaultCheckedItems || ([] as string[])
@@ -22,25 +24,13 @@ export const Select: React.FC<ISelectProps> = memo(
       defaultCheckedItems && setChekedItems(defaultCheckedItems)
     }, [defaultCheckedItems])
 
-    const selectTitle = chekedItems.length
-      ? chekedItems.join(', ')
-      : 'Select genre'
-
-    const handleChange = (event: ChangeEvent<HTMLInputElement>): void => {
-      const {
-        target: { checked, name },
-      } = event
-      checked
-        ? setChekedItems((prevItems) => [...prevItems, name])
-        : setChekedItems((prevItems) =>
-            prevItems.filter((item) => item !== name)
-          )
-    }
     return (
       <div className="select">
         <h3 className="select__title">genre</h3>
         <div className="select__text">
-          <span>{selectTitle}</span>
+          <span>
+            {chekedItems.length ? chekedItems.join(', ') : 'Select genre'}
+          </span>
           <button
             className={classnames('select__arrow', {
               select__arrow_rotate: isOpen,
@@ -50,7 +40,7 @@ export const Select: React.FC<ISelectProps> = memo(
         </div>
         {isOpen && (
           <div className="select__options">
-            <CheckboxesList chekedItems={chekedItems} onChange={handleChange} />
+            <CheckboxesList chekedItems={chekedItems} onChange={onChange} />
           </div>
         )}
       </div>

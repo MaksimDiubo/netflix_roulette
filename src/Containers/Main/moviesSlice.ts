@@ -41,7 +41,7 @@ const mainSlice = createSlice({
       const editItemIndex = state.movies.findIndex(
         (item) => item.id === action.payload.id
       )
-      if (editItemIndex === -1) {
+      if (editItemIndex !== -1) {
         state.movies[editItemIndex] = action.payload
       }
     },
@@ -84,7 +84,7 @@ export const deleteMovie = (movieId: number): AppThunk => async (dispatch) => {
 export const editMovie = (movie: IMovie): AppThunk => async (dispatch) => {
   try {
     const { id } = movie
-    updateData(id, movie)
+    // updateData(id, movie)
     dispatch(updateMovie(movie))
   } catch (err) {
     dispatch(getDataFailure(err.toString()))

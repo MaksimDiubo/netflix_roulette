@@ -18,14 +18,14 @@ export const AddMovieModal: React.FC<IAddMovieModalProps> = ({
       okBtnText="submit"
       cancelBtnText="reset"
       onOk={onClose}
-      onCancel={onClose}
+      onReset={onClose}
     >
-      <Input title="title" placeholder="Title here" />
+      {/* <Input title="title" placeholder="Title here" />
       <DatePicker title="release date" />
       <Input title="movie url" placeholder="Movie URL here" />
       <Select />
       <Input title="overview" placeholder="Overview here" />
-      <Input title="runtime" placeholder="Runtime here" />
+      <Input title="runtime" placeholder="Runtime here" /> */}
     </Modal>
   )
 }

@@ -17,7 +17,7 @@ export const MoviesList: React.FC<IModalListProps> = ({
       <ResultCount totalAmount={totalAmount} />
       <Layout columns={'3'}>
         {movies.map((movie) => {
-          return <MovieItem movie={movie} />
+          return <MovieItem movie={movie} key={movie.id} />
         })}
       </Layout>
     </>

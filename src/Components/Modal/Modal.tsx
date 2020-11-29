@@ -10,7 +10,8 @@ interface IModalProps {
   okBtnText?: string
   cancelBtnText?: string
   onOk?: () => void
-  onCancel?: () => void
+  onReset?: () => void
+  onClose?: () => void
 }
 
 export const Modal: React.FC<IModalProps> = ({
@@ -19,18 +20,21 @@ export const Modal: React.FC<IModalProps> = ({
   okBtnText,
   cancelBtnText,
   onOk,
-  onCancel,
+  onReset,
+  onClose,
   children,
 }) => {
   return isOpen ? (
     <div className="overlay">
       <div className="modal">
-        <button className="modal__close-btn" onClick={onCancel}></button>
+        <button className="modal__close-btn" onClick={onClose}></button>
         <h2 className="modal__title">{title}</h2>
         <div className="modal__content">{children}</div>
         <div className="modal__controls">
           {cancelBtnText ? (
-            <Button variant="outlined">{cancelBtnText}</Button>
+            <Button variant="outlined" onClick={onReset}>
+              {cancelBtnText}
+            </Button>
           ) : null}
           {okBtnText ? <Button onClick={onOk}>{okBtnText}</Button> : null}
         </div>

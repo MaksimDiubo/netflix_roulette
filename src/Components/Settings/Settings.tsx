@@ -1,6 +1,7 @@
 import React from 'react'
 import { useToggle } from '../../hooks'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
+import { RootState } from '../../store/rootReducer'
 import {
   setEditModalOpen,
   setEditMovieData,
@@ -21,21 +22,25 @@ export const Settings: React.FC<ISettingsProps> = ({ movie }) => {
   const [isOpen, setIsOpen] = useToggle(false)
   const dispatch = useDispatch()
 
-  const handleEditMovieOpen = () => {
+  const handleSettingsOpen = () => {
+    dispatch(setDeleteMovieId(movie.id))
     dispatch(setEditMovieData(movie))
+    setIsOpen()
+  }
+
+  const handleEditMovieOpen = () => {
     dispatch(setEditModalOpen())
     setIsOpen()
   }
 
   const handleDeleteMovieOpen = () => {
-    dispatch(setDeleteMovieId(movie.id))
     dispatch(setDeleteModalOpen())
     setIsOpen()
   }
 
   return (
     <>
-      <button className="settings-open-btn" onClick={setIsOpen}>
+      <button className="settings-open-btn" onClick={handleSettingsOpen}>
         .
       </button>
       {isOpen && (
