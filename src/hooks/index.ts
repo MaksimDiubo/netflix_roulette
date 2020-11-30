@@ -1,3 +1,4 @@
 import { useToggle } from './useToggle'
+import { useChange } from './useChange'
 
-export { useToggle }
+export { useToggle, useChange }

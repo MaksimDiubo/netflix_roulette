@@ -1,9 +1,10 @@
-import React, { useState, useEffect, ChangeEvent } from 'react'
+import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { RootState } from '../../store/rootReducer'
 import { setEditModalOpen } from './editMovieSlice'
 import { editMovie } from '../../Containers/Main/moviesSlice'
 import { Modal, Input, DatePicker, Select } from '../../Components'
+import { useChange } from '../../hooks'
 import { IMovie } from '../../models'
 
 export const EditMovieModal = () => {
@@ -12,10 +13,13 @@ export const EditMovieModal = () => {
     editMovie: { isOpen, movie },
   } = useSelector((state: RootState) => state)
 
-  const [editedMovie, setEditedMovie] = useState({} as IMovie)
+  const [editedMovie, setEditedMovie] = useChange(
+    (movie as IMovie) || ({} as IMovie)
+  )
 
   useEffect(() => {
-    movie && setEditedMovie(movie)
+    movie && setEditedMovie()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [movie, isOpen])
 
   const handleOk = () => {
@@ -23,35 +27,8 @@ export const EditMovieModal = () => {
     dispatch(setEditModalOpen())
   }
 
-  const handleReset = () => {
-    movie && setEditedMovie(movie)
-  }
-
   const handleClose = () => {
     dispatch(setEditModalOpen())
-  }
-
-  const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
-    const {
-      target: { name, value },
-    } = event
-    setEditedMovie({ ...editedMovie, [name]: value })
-  }
-
-  const handleCheckboxChange = (event: ChangeEvent<HTMLInputElement>): void => {
-    const {
-      target: { checked, name },
-    } = event
-    checked
-      ? setEditedMovie((prev) => {
-          return { ...prev, genres: [...prev.genres, name] }
-        })
-      : setEditedMovie((prev) => {
-          return {
-            ...prev,
-            genres: prev.genres.filter((item) => item !== name),
-          }
-        })
   }
 
   const {
@@ -71,29 +48,34 @@ export const EditMovieModal = () => {
       okBtnText="save"
       cancelBtnText="reset"
       onOk={handleOk}
-      onReset={handleReset}
+      onReset={setEditedMovie}
       onClose={handleClose}
     >
       <Input title="movie ID" value={id} disabled />
-      <Input title="title" value={title} onChange={handleChange} name="title" />
+      <Input
+        title="title"
+        value={title}
+        onChange={setEditedMovie}
+        name="title"
+      />
       <DatePicker
         title="release date"
         value={release_date}
-        onChange={handleChange}
+        onChange={setEditedMovie}
         name="release_date"
       />
       <Input
         title="movie url"
         value={poster_path}
-        onChange={handleChange}
+        onChange={setEditedMovie}
         name="poster_path"
       />
-      <Select defaultCheckedItems={genres} onChange={handleCheckboxChange} />
-      <Input title="overview" value={overview} onChange={handleChange} />
+      <Select defaultCheckedItems={genres} onChange={setEditedMovie} />
+      <Input title="overview" value={overview} onChange={setEditedMovie} />
       <Input
         title="runtime"
         value={runtime}
-        onChange={handleChange}
+        onChange={setEditedMovie}
         name="runtime"
       />
     </Modal>
