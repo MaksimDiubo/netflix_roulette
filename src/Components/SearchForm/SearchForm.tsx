@@ -1,13 +1,32 @@
-import React from 'react'
+import React, { useState, FormEvent, ChangeEvent } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { RootState } from '../../store/rootReducer'
+import { fetchMovies } from '../../Containers/Main/moviesSlice'
 
 import { Button } from '../Button'
 
 import './SearchForm.scss'
 
-export const SearchForm: React.FC = (props) => {
+export const SearchForm: React.FC = () => {
+  const [value, setValue] = useState<string | null>(null)
+  const dispatch = useDispatch()
+
+  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault()
+    value && dispatch(fetchMovies(value))
+  }
+
+  const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
+    const {
+      target: { value },
+    } = event
+    setValue(value)
+  }
+
   const inputId = 'search'
+
   return (
-    <form className="search-form" method="get">
+    <form className="search-form" method="get" onSubmit={handleSubmit}>
       <label className="search-form__label" htmlFor={inputId}>
         find your movie
       </label>
@@ -18,6 +37,7 @@ export const SearchForm: React.FC = (props) => {
         id={inputId}
         autoComplete="off"
         placeholder="What do you want to watch?"
+        onChange={handleChange}
       />
       <Button type="submit" size="l">
         search
