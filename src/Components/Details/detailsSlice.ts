@@ -1,9 +1,8 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
-import { IModal, IMovie } from '../../models'
+import { IModal } from '../../models'
 
 const initialState: IModal = {
   isOpen: false,
-  movie: null,
 }
 
 const details = createSlice({
@@ -13,12 +12,9 @@ const details = createSlice({
     setIsDetailsOpen(state, action: PayloadAction<boolean>) {
       state.isOpen = action.payload
     },
-    setMovieDetails(state, action: PayloadAction<IMovie>) {
-      state.movie = action.payload
-    },
   },
 })
 
-export const { setIsDetailsOpen, setMovieDetails } = details.actions
+export const { setIsDetailsOpen } = details.actions
 
 export default details.reducer

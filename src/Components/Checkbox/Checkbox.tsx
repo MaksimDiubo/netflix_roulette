@@ -11,7 +11,7 @@ interface ICheckboxProps {
 export const Checkbox: React.FC<ICheckboxProps> = ({
   genre,
   onChange,
-  defaultChecked,
+  defaultChecked = false,
 }) => {
   return (
     <label className="checkbox" htmlFor={genre}>
@@ -20,7 +20,7 @@ export const Checkbox: React.FC<ICheckboxProps> = ({
         id={genre}
         name={genre}
         onChange={onChange}
-        defaultChecked={defaultChecked || false}
+        defaultChecked={defaultChecked}
       />
       <span className="checkbox__checkmark"></span>
       {genre}

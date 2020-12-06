@@ -1,40 +1,32 @@
 import React from 'react'
 import { useToggle } from '../../hooks'
-import { useDispatch, useSelector } from 'react-redux'
-import { RootState } from '../../store/rootReducer'
-import {
-  setEditModalOpen,
-  setEditMovieData,
-} from '../EditMovieModal/editMovieSlice'
-import {
-  setDeleteModalOpen,
-  setDeleteMovieId,
-} from '../DeleteMovieModal/deleteMovieSlice'
-import { IMovie } from '../../models'
+import { useDispatch } from 'react-redux'
+import { setEditModalOpen } from '../EditMovieModal/editMovieSlice'
+import { setDeleteModalOpen } from '../DeleteMovieModal/deleteMovieSlice'
+import { setCurrentMovieId } from '../../Containers/Main/moviesSlice'
 
 import './Settings.scss'
 
 interface ISettingsProps {
-  movie: IMovie
+  id: number
 }
 
-export const Settings: React.FC<ISettingsProps> = ({ movie }) => {
+export const Settings: React.FC<ISettingsProps> = ({ id }) => {
   const [isOpen, setIsOpen] = useToggle(false)
   const dispatch = useDispatch()
 
   const handleSettingsOpen = () => {
-    dispatch(setDeleteMovieId(movie.id))
-    dispatch(setEditMovieData(movie))
+    dispatch(setCurrentMovieId(id))
     setIsOpen()
   }
 
   const handleEditMovieOpen = () => {
-    dispatch(setEditModalOpen())
+    dispatch(setEditModalOpen(true))
     setIsOpen()
   }
 
   const handleDeleteMovieOpen = () => {
-    dispatch(setDeleteModalOpen())
+    dispatch(setDeleteModalOpen(true))
     setIsOpen()
   }
 

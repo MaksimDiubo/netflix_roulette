@@ -21,6 +21,8 @@ import { Checkbox } from './Checkbox'
 import { CheckboxesList } from './CheckboxesList'
 import { Details } from './Details'
 import { Loader } from './Loader'
+import { SearchBtnIcon } from './SearchBtnIcon'
+import { ModalInner } from './ModalInner'
 
 export {
   Layout,
@@ -46,4 +48,6 @@ export {
   CheckboxesList,
   Details,
   Loader,
+  SearchBtnIcon,
+  ModalInner,
 }

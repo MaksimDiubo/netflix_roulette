@@ -10,15 +10,12 @@ const deleteMovieSlice = createSlice({
   name: 'deleteMovie',
   initialState,
   reducers: {
-    setDeleteModalOpen(state) {
-      state.isOpen = !state.isOpen
-    },
-    setDeleteMovieId(state, action: PayloadAction<number>) {
-      state.movieId = action.payload
+    setDeleteModalOpen(state, action: PayloadAction<boolean>) {
+      state.isOpen = action.payload
     },
   },
 })
 
-export const { setDeleteModalOpen, setDeleteMovieId } = deleteMovieSlice.actions
+export const { setDeleteModalOpen } = deleteMovieSlice.actions
 
 export default deleteMovieSlice.reducer

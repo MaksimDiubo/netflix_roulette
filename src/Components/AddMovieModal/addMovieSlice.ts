@@ -5,7 +5,7 @@ import { IModal, IMovie } from '../../models'
 
 const initialState: IModal = {
   isOpen: false,
-  movie: null,
+  movie: {} as IMovie,
   error: null,
 }
 
@@ -13,8 +13,8 @@ const addMovie = createSlice({
   name: 'addMovie',
   initialState,
   reducers: {
-    setIsAddMovieOpen(state) {
-      state.isOpen = !state.isOpen
+    setIsAddMovieOpen(state, action: PayloadAction<boolean>) {
+      state.isOpen = action.payload
     },
     addNewMovie(state, action: PayloadAction<IMovie>) {
       state.error = null
@@ -36,7 +36,7 @@ export const addMovieItem = (movie: IMovie): AppThunk => async (dispatch) => {
   try {
     // await addData(movie)
     dispatch(addNewMovie(movie))
-    dispatch(setIsAddMovieOpen())
+    dispatch(setIsAddMovieOpen(false))
   } catch (err) {
     dispatch(getDataFailure(err.toString()))
   }

@@ -1,0 +1,12 @@
+.serch-btn {
+  width: 40px;
+  height: 40px;
+  border: none;
+  background-color: transparent;
+  outline: none;
+  cursor: pointer;
+
+  &:hover {
+    transform: scale(1.1);
+  }
+}

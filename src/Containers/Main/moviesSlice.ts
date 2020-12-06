@@ -6,6 +6,7 @@ import { IMovie } from '../../models'
 interface IMovies {
   movies: Array<IMovie>
   totalAmount: number
+  currentMovieId: null | number
   isLoading: boolean
   error: string | null
 }
@@ -13,11 +14,12 @@ interface IMovies {
 const initialState: IMovies = {
   movies: [],
   totalAmount: 0,
+  currentMovieId: null,
   isLoading: false,
   error: null,
 }
 
-const mainSlice = createSlice({
+const moviesSlice = createSlice({
   name: 'movies',
   initialState,
   reducers: {
@@ -33,6 +35,9 @@ const mainSlice = createSlice({
     },
     getDataFailure(state, action: PayloadAction<string | null>) {
       state.error = action.payload
+    },
+    setCurrentMovieId(state, action: PayloadAction<number>) {
+      state.currentMovieId = action.payload
     },
     removeMovie(state, action: PayloadAction<number>) {
       state.movies.filter((movie) => movie.id === action.payload)
@@ -55,7 +60,8 @@ export const {
   getTotalAmount,
   removeMovie,
   updateMovie,
-} = mainSlice.actions
+  setCurrentMovieId,
+} = moviesSlice.actions
 
 export const fetchMovies = (serchValue?: string): AppThunk => async (
   dispatch
@@ -91,4 +97,4 @@ export const editMovie = (movie: IMovie): AppThunk => async (dispatch) => {
   }
 }
 
-export default mainSlice.reducer
+export default moviesSlice.reducer

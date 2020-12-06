@@ -11,16 +11,19 @@ import './DeleteMovieModal.scss'
 export const DeleteMovieModal = () => {
   const dispatch = useDispatch()
   const {
-    deleteMovie: { isOpen, movieId },
+    deleteMovie: { isOpen },
+  } = useSelector((state: RootState) => state)
+  const {
+    movies: { currentMovieId },
   } = useSelector((state: RootState) => state)
 
   const handleClose = () => {
-    dispatch(setDeleteModalOpen())
+    dispatch(setDeleteModalOpen(false))
   }
 
   const handleOk = () => {
-    dispatch(setDeleteModalOpen())
-    movieId && dispatch(deleteMovie(movieId))
+    dispatch(setDeleteModalOpen(false))
+    currentMovieId && dispatch(deleteMovie(currentMovieId))
   }
 
   return (

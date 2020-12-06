@@ -1,6 +1,5 @@
 import React, { useState, FormEvent, ChangeEvent } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import { RootState } from '../../store/rootReducer'
+import { useDispatch } from 'react-redux'
 import { fetchMovies } from '../../Containers/Main/moviesSlice'
 
 import { Button } from '../Button'
@@ -26,7 +25,7 @@ export const SearchForm: React.FC = () => {
   const inputId = 'search'
 
   return (
-    <form className="search-form" method="get" onSubmit={handleSubmit}>
+    <form className="search-form" onSubmit={handleSubmit}>
       <label className="search-form__label" htmlFor={inputId}>
         find your movie
       </label>

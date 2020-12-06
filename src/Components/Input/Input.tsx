@@ -1,4 +1,4 @@
-import React, { ChangeEvent } from 'react'
+import React, { ChangeEvent, memo } from 'react'
 
 import './Input.scss'
 
@@ -7,6 +7,7 @@ interface IInputProps {
   placeholder?: string
   disabled?: boolean
   value?: string | number
+  defaultValue?: string | number
   name?: string
   onChange?: (event: ChangeEvent<HTMLInputElement>) => void
 }
@@ -16,6 +17,7 @@ export const Input: React.FC<IInputProps> = ({
   placeholder,
   disabled,
   value,
+  defaultValue,
   onChange,
   name,
 }) => {
@@ -32,7 +34,8 @@ export const Input: React.FC<IInputProps> = ({
         autoComplete="off"
         placeholder={placeholder}
         disabled={disabled}
-        value={value || ''}
+        value={value}
+        defaultValue={defaultValue}
         onChange={onChange}
       />
     </>

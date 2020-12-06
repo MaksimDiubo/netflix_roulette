@@ -3,13 +3,18 @@ import { IMovie } from '../models'
 
 export const useChange = (
   initialValue: IMovie
-): [IMovie, (event?: ChangeEvent<HTMLInputElement>) => void] => {
+): [
+  IMovie,
+  (event?: ChangeEvent<HTMLInputElement> | null, defaultState?: IMovie) => void
+] => {
   const [state, setState] = useState(initialValue)
 
   const handleChange = useCallback(
-    (event?: ChangeEvent<HTMLInputElement>) => {
+    (event?: ChangeEvent<HTMLInputElement> | null, defaultState?: IMovie) => {
       if (!event) {
-        setState(initialValue)
+        console.log(defaultState)
+
+        defaultState && setState(defaultState)
         return
       }
 

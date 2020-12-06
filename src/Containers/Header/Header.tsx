@@ -12,6 +12,7 @@ import {
   Wrapper,
   AddMovieModal,
   Details,
+  Loader,
 } from '../../Components'
 
 import './Header.scss'
@@ -20,21 +21,29 @@ export const Header = () => {
   const dispatch = useDispatch()
 
   const {
-    details: { isOpen, movie },
+    details: { isOpen },
+  } = useSelector((state: RootState) => state)
+  const {
+    movies: { movies, currentMovieId },
   } = useSelector((state: RootState) => state)
 
   const handleAddMovieClose = () => {
-    dispatch(setIsAddMovieOpen())
+    dispatch(setIsAddMovieOpen(true))
   }
 
   const handleDetailsClose = () => {
     dispatch(setIsDetailsOpen(false))
   }
 
-  if (isOpen && movie) {
+  if (isOpen) {
+    const currentMovie = movies.find((movie) => movie.id === currentMovieId)
     return (
       <div className="header">
-        <Details movie={movie} handleClose={handleDetailsClose} />
+        {currentMovie ? (
+          <Details movie={currentMovie} handleClose={handleDetailsClose} />
+        ) : (
+          <Loader />
+        )}
       </div>
     )
   }

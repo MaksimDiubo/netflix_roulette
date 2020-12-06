@@ -1,18 +1,5 @@
 @import '../../assets/scss/variables';
 
-.serch-btn {
-  width: 40px;
-  height: 40px;
-  border: none;
-  background-color: transparent;
-  outline: none;
-  cursor: pointer;
-
-  &:hover {
-    transform: scale(1.1);
-  }
-}
-
 .details {
   background-color: $color-description-bg;
   padding-bottom: 20px;

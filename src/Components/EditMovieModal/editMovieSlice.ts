@@ -3,22 +3,19 @@ import { IModal, IMovie } from '../../models'
 
 const initialState: IModal = {
   isOpen: false,
-  movie: null,
+  movie: {} as IMovie,
 }
 
 const editMovieSlice = createSlice({
   name: 'editMovie',
   initialState,
   reducers: {
-    setEditModalOpen(state) {
-      state.isOpen = !state.isOpen
-    },
-    setEditMovieData(state, action: PayloadAction<IMovie>) {
-      state.movie = action.payload
+    setEditModalOpen(state, action: PayloadAction<boolean>) {
+      state.isOpen = action.payload
     },
   },
 })
 
-export const { setEditModalOpen, setEditMovieData } = editMovieSlice.actions
+export const { setEditModalOpen } = editMovieSlice.actions
 
 export default editMovieSlice.reducer
