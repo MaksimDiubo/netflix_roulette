@@ -1,22 +1,30 @@
-import React, { useState } from 'react'
+import React, { useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { RootState } from '../../store/rootReducer'
+import { fetchMovies } from './moviesSlice'
 
 import {
   Wrapper,
   Layout,
   ResultsFilter,
   ResultsSelect,
-  ResultCount,
   MoviesList,
   EditMovieModal,
   DeleteMovieModal,
+  Loader,
 } from '../../Components'
-import { visibilityToggle } from '../../utils/utils'
 
 import './Main.scss'
 
 export const Main = () => {
-  const [showEditMovie, setShowEditMovie] = useState(false)
-  const [showDeleteMovie, setShowDeleteMovie] = useState(false)
+  const dispatch = useDispatch()
+  const {
+    movies: { isLoading, totalAmount, movies },
+  } = useSelector((state: RootState) => state)
+
+  useEffect(() => {
+    dispatch(fetchMovies())
+  }, [dispatch])
 
   return (
     <div className="main">
@@ -25,30 +33,15 @@ export const Main = () => {
           <ResultsFilter />
           <ResultsSelect />
         </Layout>
-        <ResultCount />
-        <Layout columns="3">
-          <MoviesList
-            editModalShow={() => {
-              visibilityToggle(showEditMovie, setShowEditMovie)
-            }}
-            deleteModalShow={() => {
-              visibilityToggle(showDeleteMovie, setShowDeleteMovie)
-            }}
-          />
-        </Layout>
+
+        {isLoading ? (
+          <Loader />
+        ) : (
+          <MoviesList totalAmount={totalAmount} movies={movies} />
+        )}
       </Wrapper>
-      <EditMovieModal
-        isOpen={showEditMovie}
-        visibilityToggle={() =>
-          visibilityToggle(showEditMovie, setShowEditMovie)
-        }
-      />
-      <DeleteMovieModal
-        isOpen={showDeleteMovie}
-        visibilityToggle={() =>
-          visibilityToggle(showDeleteMovie, setShowDeleteMovie)
-        }
-      />
+      <EditMovieModal />
+      <DeleteMovieModal />
     </div>
   )
 }
