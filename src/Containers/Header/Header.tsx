@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { RootState } from '../../store/rootReducer'
 import { setIsAddMovieOpen } from '../../Components/AddMovieModal/addMovieSlice'
 import { setIsDetailsOpen } from '../../Components/Details/detailsSlice'
+import { IMovie } from '../../models'
 
 import {
   Layout,
@@ -36,7 +37,9 @@ export const Header = () => {
   }
 
   if (isOpen) {
-    const currentMovie = movies.find((movie) => movie.id === currentMovieId)
+    const currentMovie = movies.find(
+      (movie: IMovie) => movie.id === currentMovieId
+    )
     return (
       <div className="header">
         {currentMovie ? (

@@ -1,20 +1,38 @@
 import React, { useState } from 'react'
-
-import genres from '../../data/genres.json'
+import { Genres } from '../../models'
 
 import './ResultsFilter.scss'
 
-export const ResultsFilter = () => {
+interface IResultFilterProps {
+  filterMovies: (filter: string) => void
+}
+
+export const ResultsFilter: React.FC<IResultFilterProps> = ({
+  filterMovies,
+}) => {
   const [markerPosition, setMarkerPosition] = useState({
     left: 0,
     width: '32px',
   })
 
-  const indicator = (e: any) => {
+  const setMarker = (e: any) => {
     setMarkerPosition({
       left: e.target.offsetLeft,
       width: e.target.offsetWidth,
     })
+  }
+
+  const handleClick = (e: any) => {
+    const {
+      target: { textContent },
+    } = e
+    if (textContent === 'All') {
+      setMarker(e)
+      filterMovies('')
+      return
+    }
+    setMarker(e)
+    filterMovies(textContent)
   }
 
   return (
@@ -23,17 +41,14 @@ export const ResultsFilter = () => {
         className="results-filter__marker"
         style={{ left: markerPosition.left, width: markerPosition.width }}
       ></div>
-      <li className="results-filter__tag" onClick={indicator}>
-        all
-      </li>
-      {genres.genres.map((genre) => {
+      {Object.values(Genres).map((genre, index) => {
         return (
           <li
             className="results-filter__tag"
-            key={genre.id}
-            onClick={indicator}
+            key={index.toString()}
+            onClick={handleClick}
           >
-            {genre.genre}
+            {genre}
           </li>
         )
       })}

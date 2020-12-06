@@ -21,10 +21,16 @@ export interface IResponse {
 }
 
 export enum Genres {
+  All = 'All',
   Crime = 'Crime',
   Documentary = 'Documentary',
   Horror = 'Horror',
   Comedy = 'Comedy',
+}
+
+export enum SortParameters {
+  rating = 'rating',
+  release_date = 'release_date',
 }
 
 export interface IModal {
