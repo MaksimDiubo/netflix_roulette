@@ -1,10 +1,19 @@
-import React from 'react'
+import React, { ChangeEvent } from 'react'
 
 import './ResultsSelect.scss'
 
-export const ResultsSelect = () => {
-  const resultsSelectId = 'results-select'
+interface IResultSelectProps {
+  sortMovies: (sortParam: string) => void
+}
 
+export const ResultsSelect: React.FC<IResultSelectProps> = ({ sortMovies }) => {
+  const handleChange = (event: ChangeEvent<HTMLSelectElement>) => {
+    const {
+      target: { value },
+    } = event
+    sortMovies(value)
+  }
+  const resultsSelectId = 'results-select'
   return (
     <div className="results-select">
       <label className="results-select__label" htmlFor={resultsSelectId}>
@@ -15,12 +24,12 @@ export const ResultsSelect = () => {
         name="results-select"
         id={resultsSelectId}
         defaultValue="release date"
+        onChange={handleChange}
       >
-        <option className="results-select__option" value="release date">
+        <option className="results-select__option" value="release_date">
           release date
         </option>
-        <option value="rating">rating</option>
-        <option value="alphabet">alphabet</option>
+        <option value="vote_average">rating</option>
       </select>
     </div>
   )

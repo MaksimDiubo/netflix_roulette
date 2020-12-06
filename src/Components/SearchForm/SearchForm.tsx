@@ -1,6 +1,6 @@
 import React, { useState, FormEvent, ChangeEvent } from 'react'
 import { useDispatch } from 'react-redux'
-import { fetchMovies } from '../../Containers/Main/moviesSlice'
+import { setSearchReques } from '../../Containers/Main/moviesSlice'
 
 import { Button } from '../Button'
 
@@ -12,7 +12,9 @@ export const SearchForm: React.FC = () => {
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault()
-    value && dispatch(fetchMovies(value))
+    if (value) {
+      dispatch(setSearchReques(value))
+    }
   }
 
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {

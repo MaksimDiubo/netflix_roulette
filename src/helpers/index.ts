@@ -11,8 +11,8 @@ export const updateData = async (id: number, data: IMovie) => {
   })
 }
 
-export const getData = async (serchValue?: string) => {
-  const url = serchValue ? `${URL}?search=${serchValue}&searchBy=title` : URL
+export const getData = async (serchValue = '', sortBy = '', filter = '') => {
+  const url = `${URL}?sortBy=${sortBy}&sortOrder=desc&search=${serchValue}&searchBy=title&filter=${filter}&offset=0&limit=18`
   const res = await fetch(url, {
     headers: {
       'Access-Control-Allow-Origin': '*',
